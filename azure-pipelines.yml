@@ -4,9 +4,9 @@
 
 trigger:
 - main
-
-pool: 
+pool:
   name: my-personal-computer
+
 
 resources:
 - repo: self
