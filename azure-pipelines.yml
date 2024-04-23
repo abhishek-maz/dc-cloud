@@ -4,8 +4,8 @@
 
 trigger:
 - main
-pool:
-  name: my-personal-computer
+
+pool: my-personal-computer
 
 
 resources:
