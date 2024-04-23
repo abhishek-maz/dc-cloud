@@ -47,7 +47,8 @@ stages:
   jobs:
   - job: Deploy
     displayName: Deploy
-    pool: my-personal-computer
+    pool:
+      vmImage: $(vmImageName)
     steps:
     - task: AzureContainerApps@1
       inputs:
@@ -55,3 +56,4 @@ stages:
         acrName: 'dccloud'
         imageToDeploy: '$(containerRegistry)/$(imageRepository):$(tag)'  # Specify the image to deploy
         containerAppName: 'dc-cloud'  # Specify the name of the Container App
+        resourceGroupName: 'ICE1'  # Specify the resource group name
