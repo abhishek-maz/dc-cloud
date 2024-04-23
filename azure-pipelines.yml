@@ -49,10 +49,9 @@ stages:
     displayName: Deploy
     pool: my-personal-computer
     steps:
-
-
     - task: AzureContainerApps@1
       inputs:
         azureSubscription: $(azureSubscription)
         acrName: 'dccloud'
         imageToDeploy: '$(containerRegistry)/$(imageRepository):$(tag)'  # Specify the image to deploy
+        containerAppName: 'dc-cloud'  # Specify the name of the Container App
