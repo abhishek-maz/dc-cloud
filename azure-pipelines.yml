@@ -1,5 +1,5 @@
 # Docker
-# Build and push an image to Azure Container Registry...
+# Build and push an image to Azure Container Registry..
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
@@ -56,3 +56,4 @@ stages:
         imageToDeploy: '$(containerRegistry)/$(imageRepository):$(tag)'  # Specify the image to deploy
         containerAppName: 'dc-cloud'  # Specify the name of the Container App
         resourceGroupName: 'ICE1'  # Specify the resource group name
+        usePowerShell: false  # Specify to not use PowerShell
