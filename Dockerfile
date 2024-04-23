@@ -1,5 +1,5 @@
 FROM node:19.7.0-alpine
-
+# Added to trigger build.
 
 ENV NODE_ENV production
 RUN mkdir /labone/ && chown node:node /labone/
