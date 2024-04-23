@@ -55,5 +55,5 @@ stages:
         acrName: 'dccloud'
         imageToDeploy: '$(containerRegistry)/$(imageRepository):$(tag)'  # Specify the image to deploy
         containerAppName: 'dc-cloud'  # Specify the name of the Container App
-        resourceGroupName: 'ICE1'  # Specify the resource group name
+        resourceGroup: 'ICE1'  # Specify the resource group name
         usePowerShell: false  # Specify to not use PowerShell
