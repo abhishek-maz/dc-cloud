@@ -47,8 +47,7 @@ stages:
   jobs:
   - job: Deploy
     displayName: Deploy
-    pool:
-      vmImage: $(vmImageName)
+    pool: my-personal-computer
     steps:
     - task: AzureContainerApps@1
       inputs:
