@@ -1,5 +1,4 @@
 # Docker
-
 # Build and push an image to Azure Container Registry..
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
@@ -7,7 +6,6 @@ trigger:
 - main
 
 pool: my-personal-computer
-
 
 resources:
 - repo: self
@@ -22,6 +20,9 @@ variables:
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
+
+  # Azure subscription
+  azureSubscription: 'Azure for Students(2)(9268eabe-5131-4454-b856-5c684869a548)'
 
 stages:
 - stage: Build
@@ -40,7 +41,17 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+
+- stage: Deploy
+  displayName: Deploy to Azure Container Apps
+  jobs:
+  - job: Deploy
+    displayName: Deploy
+    pool:
+      vmImage: $(vmImageName)
+    steps:
     - task: AzureContainerApps@1
       inputs:
-        azureSubscription: 'Azure for Students(2)(9268eabe-5131-4454-b856-5c684869a548)'
+        azureSubscription: $(azureSubscription)
         acrName: 'dccloud'
+        imageToDeploy: '$(containerRegistry)/$(imageRepository):$(tag)'
