@@ -49,5 +49,4 @@ stages:
       inputs:
         azureSubscription: 'ice'
         appName: 'dc-cloud'
-        acrName: 'dccloud'
-        imageToDeploy: '$(containerRegistry)/$(imageRepository):$(Build.BuildId)'  # Specify the image with tag
+        containers: '$(containerRegistry)/$(imageRepository):$(Build.BuildId)'  # Specify the image with tag
