@@ -43,16 +43,15 @@ stages:
           $(tag)
 
 - stage: Deploy
-  displayName: Deploy to Azure Container Apps
+  displayName: Deploy to Azure web app
   jobs:
   - job: Deploy
     displayName: Deploy
     pool: my-personal-computer
     steps:
-    - task: AzureContainerApps@1
+    - task: AzureWebAppContainer@1
       inputs:
-        azureSubscription: $(azureSubscription)
+        azureSubscription: 'ice'
+        appName: 'dc-cloud'
         acrName: 'dccloud'
         imageToDeploy: '$(containerRegistry)/$(imageRepository):$(tag)'  # Specify the image to deploy
-        containerAppName: 'dc-cloud'  # Specify the name of the Container App
-        resourceGroup: 'ICE1'  # Specify the resource group name
